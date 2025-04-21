@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: school-management
+    env: python
+    region: oregon
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python manage.py collectstatic --no-input
+    startCommand: gunicorn school_management.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: school_management.settings
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: SECRET_KEY
+        value: ${SECRET_KEY}
+      - key: DEBUG
+        value: ${DEBUG}
+      - key: ALLOWED_HOSTS
+        value: ${ALLOWED_HOSTS}
+      - key: EMAIL_HOST_USER
+        value: ${EMAIL_HOST_USER}
+      - key: EMAIL_HOST_PASSWORD
+        value: ${EMAIL_HOST_PASSWORD}
+      - key: DEFAULT_FROM_EMAIL
+        value: ${DEFAULT_FROM_EMAIL}
+      - key: ADMIN_EMAIL
+        value: ${ADMIN_EMAIL}
+      - key: RAZORPAY_KEY_ID
+        value: ${RAZORPAY_KEY_ID}
+      - key: RAZORPAY_KEY_SECRET
+        value: ${RAZORPAY_KEY_SECRET}
+      - key: RAZORPAY_CURRENCY
+        value: ${RAZORPAY_CURRENCY}
+    plan: free
+
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="*").split(",")
