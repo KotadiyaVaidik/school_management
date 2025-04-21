@@ -12,7 +12,8 @@ os.makedirs(LOGS_DIR, exist_ok=True)
 
 SECRET_KEY = config('SECRET_KEY')
 
-# DEBUG = env.bool("DEBUG", default=True)
+ENVIRONMENT = config("ENVIRONMENT", default="development")
+DEBUG = config("DEBUG", default=(ENVIRONMENT == "development"), cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
