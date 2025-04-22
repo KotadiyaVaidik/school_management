@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.utils import timezone
 from django.urls import reverse
+from django.contrib.auth import authenticate, login
 
 from .models import FeeTransaction
 from students.models import Student
@@ -21,6 +22,9 @@ from .utils.receipts import send_receipt_email
 import razorpay
 import json
 import traceback
+import logging
+
+logger = logging.getLogger('fees')
 
 # Initialize Razorpay client with settings from settings.py
 razorpay_client = razorpay.Client(
@@ -427,3 +431,21 @@ def payment_success(request, transaction_id):
 def payment_failure(request):
     logger.info("Displaying payment failure page")
     return render(request, 'fees/payment_failure.html')
+
+def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('core:home')
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        logger.debug(f"Attempting login for username: {username}")
+        
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            return redirect('core:home')
+        else:
+            messages.error(request, 'Invalid username or password.')
+            logger.error(f"Login failed for username: {username}")
