@@ -1,14 +1,3 @@
-*.pyc
-__pycache__/
-db.sqlite3
-/static/
-/media/
+
 .env
 .env*
-*.log
-*.sqlite3
-.DS_Store
-/logs/
-.vscode/
-*~
-*.swp
