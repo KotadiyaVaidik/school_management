@@ -13,11 +13,13 @@ os.makedirs(LOGS_DIR, exist_ok=True)
 SECRET_KEY = config('SECRET_KEY')
 
 ENVIRONMENT = config("ENVIRONMENT", default="development")
-DEBUG = config("DEBUG", default=(ENVIRONMENT == "development"), cast=bool)
-# DEBUG = True
+# DEBUG = config("DEBUG", default=(ENVIRONMENT == "development"), cast=bool)
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 
 
 
@@ -124,9 +126,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
 
 USE_X_FORWARDED_HOST = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
