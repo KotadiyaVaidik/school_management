@@ -14,16 +14,16 @@
                     <li class="breadcrumb-item active">Attendance</li>
                 </ul>
             </div>
-            <div class="col-auto text-right float-right ml-auto">
+            <div class="col-12 col-md-auto text-center text-md-right mt-2 mt-md-0">
 
                 <!-- <a href="{% url 'attendance:download_all' %}" class="btn btn-secondary">
                     <i class="fas fa-download"></i> Download All
                 </a> -->
                 {% if not is_student %}
-                <a href="{% url 'attendance:bulk_create' %}" class="btn btn-primary">
+                <a href="{% url 'attendance:bulk_create' %}" class="btn btn-primary mb-4">
                     <i class="fas fa-plus"></i> Bulk Attendance
                 </a>
-                <a href="{% url 'attendance:create' %}" class="btn btn-primary">
+                <a href="{% url 'attendance:create' %}" class="btn btn-primary mb-4">
                     <i class="fas fa-plus"></i> Add Attendance
                 </a>
                 {% endif %}
@@ -87,7 +87,7 @@
                         </form>
 
                         <!-- Download button -->
-                        <div class="text-right mt-3">
+                        <div class="text-center text-md-right mt-3">
                             <a href="{% url 'attendance:download_all' %}?class_name={{ request.GET.class_name|default:'' }}&date_from={{ request.GET.date_from|default:'' }}&date_to={{ request.GET.date_to|default:'' }}&status={{ request.GET.status|default:'' }}"
                                 class="btn btn-secondary">
                                 <i class="fas fa-download"></i> Download as CSV

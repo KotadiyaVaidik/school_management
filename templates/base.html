@@ -498,12 +498,14 @@
                                 {% endif %}
 
                                 <!-- Teacher Attendance -->
+                                {% if request.user_type != 'student' %}
                                 <li>
                                     <a href="{% url 'attendance:teacher_attendance_list' %}"
                                         class="{% if request.resolver_match.url_name == 'teacher_attendance_list' %}active{% endif %}">
                                         Teacher Attendance List
                                     </a>
                                 </li>
+                                {% endif %}
                                 {% if request.user.is_staff or request.user.is_superuser %}
                                 <li>
                                     <a href="{% url 'attendance:teacher_attendance_create' %}"

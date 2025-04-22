@@ -450,7 +450,6 @@ def teacher_attendance_create(request):
     return render(request, 'attendance/teacher_attendance_create.html', context)
 
 @login_required
-@admin_required
 def teacher_attendance_list(request):
     """View for listing teacher attendance records - Admin only"""
     # Get filter parameters

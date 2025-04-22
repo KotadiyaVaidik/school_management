@@ -5,7 +5,7 @@
 
 {% block content %}
 <!-- Debug Info (Only visible to staff) -->
-{% if user.is_staff %}
+{% comment %} {% if user.is_staff %}
 <div class="container-fluid mb-4">
     <div class="card bg-light">
         <div class="card-header">
@@ -18,20 +18,24 @@
         </div>
     </div>
 </div>
-{% endif %}
+{% endif %} {% endcomment %}
 
 <div class="container-fluid">
     <!-- Page Header -->
     <div class="page-header">
         <div class="row align-items-center">
-            <div class="col">
-                <h3 class="page-title">Library Books</h3>
+            <div class="col-12 col-md">
+                <h3 class="page-title d-block d-md-none text-center">Library Books</h3>
+                <h3 class="page-title d-none d-md-block">Library Books</h3>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'core:home' %}">Dashboard</a></li>
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'core:home' %}">Dashboard</a>
+                    </li>
                     <li class="breadcrumb-item active">Library Books</li>
                 </ul>
             </div>
-            <div class="col-auto text-end float-end ms-auto">
+        
+            <div class="col-12 col-md-auto text-center text-md-end mt-3 mt-md-0">
                 {% if request.user_type != 'student' %}
                 <a href="{% url 'library:book_create' %}" class="btn btn-primary">
                     <i class="fas fa-plus"></i> Add Book

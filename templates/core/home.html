@@ -266,6 +266,21 @@
         max-width: 250px;
     }
 
+    .flex-responsive {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      @media (min-width: 768px) {
+        .flex-responsive {
+          flex-direction: row;
+        }
+      }
+
+    
+  
+
     .chart-container {
         height: 380px;
         position: relative;
@@ -304,11 +319,18 @@
             flex-wrap: wrap;
             gap: 10px;
             justify-content: space-between;
+            flex-direction: column;
         }
 
         .chart-container {
             height: 320px;
         }
+
+        @media (max-width: 767px) {
+            .view-selector::after {
+              display: none !important;
+            }
+          }
     }
 </style>
 {% endblock %}
@@ -321,7 +343,7 @@
         <div class="card bg-primary text-white"
             style="background: linear-gradient(45deg, #6f42c1, #6610f2) !important; border: none;">
             <div class="card-body p-4">
-                <div class="d-flex align-items-center">
+                <div class="flex-responsive">
                     <div class="flex-shrink-0 me-3">
                         {% if request.user.teacher.profile_picture %}
                         <img src="{{ request.user.teacher.profile_picture.url }}" alt="Admin Profile"
@@ -426,8 +448,8 @@
     <div class="col-12">
         <div class="attendance-chart-card">
             <div class="attendance-chart-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h2>ATTENDANCE</h2>
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <h2 class="mb-4 ">ATTENDANCE</h2>
                     <div class="attendance-filters">
                         <div class="view-selector me-3">
                             <select id="chartViewSelector" class="form-select">
@@ -441,7 +463,8 @@
                         <div class="date-range-selector d-flex align-items-center">
                             <input type="date" id="startDate" class="form-control me-1" style="max-width: 150px;"
                                 value="{{ attendance_chart_data.start_date }}">
-                            <span class="px-1">to</span>
+                                <span class="px-1 d-none d-md-inline">to</span>
+
                             <input type="date" id="endDate" class="form-control me-2" style="max-width: 150px;"
                                 value="{{ attendance_chart_data.end_date }}">
                             <button type="button" id="updateDateRange" class="btn btn-sm btn-primary">Apply</button>

@@ -277,3 +277,12 @@
 2025-04-20 12:43:06 - INFO - views.py:167 - payment_callback - Payment callback: payment_id=pay_QLE1OBb8JJVbr7, order_id=order_QLE1ACgJIFWldW
 2025-04-20 12:43:06 - INFO - views.py:192 - payment_callback - Signature verification result: True
 2025-04-20 12:43:06 - INFO - logging.py:36 - log_payment_success - Payment successful | Transaction ID: 8 | Payment ID: pay_QLE1OBb8JJVbr7 | Order ID: order_QLE1ACgJIFWldW | Amount: 5.00
+2025-04-22 14:46:05 - INFO - views.py:61 - initiate_payment - Student detected: vaidik kotadiya (ID: 27)
+2025-04-22 14:46:10 - INFO - logging.py:21 - log_payment_attempt - Payment attempt initiated | Student ID: 27 | Amount: 100.0 | User ID: Same as student
+2025-04-22 14:46:12 - INFO - views.py:118 - initiate_payment - Razorpay order created: order_QM3Bt0FVmcvq7O for student 27
+2025-04-22 14:46:12 - DEBUG - views.py:119 - initiate_payment - Order details: {'amount': 10000, 'amount_due': 10000, 'amount_paid': 0, 'attempts': 0, 'created_at': 1745313372, 'currency': 'INR', 'entity': 'order', 'id': 'order_QM3Bt0FVmcvq7O', 'notes': [], 'offer_id': None, 'receipt': 'receipt_9', 'status': 'created'}
+2025-04-22 14:46:36 - INFO - views.py:162 - payment_callback - Payment callback received
+2025-04-22 14:46:36 - DEBUG - views.py:163 - payment_callback - POST data: <QueryDict: {'csrfmiddlewaretoken': ['80LPgjZ0MCU5mq13dBy1m216qRJRKQbU8ECdXv17fVbuY3AprP4tMN6Td0owV4nl'], 'csrf_token': ['80LPgjZ0MCU5mq13dBy1m216qRJRKQbU8ECdXv17fVbuY3AprP4tMN6Td0owV4nl'], 'razorpay_payment_id': ['pay_QM3C5cQbRXnvBb'], 'razorpay_order_id': ['order_QM3Bt0FVmcvq7O'], 'razorpay_signature': ['2281083482efcc5e2d361350fc2a3229c14c09f46153ccb2b96cf868cdd5bd14']}>
+2025-04-22 14:46:36 - INFO - views.py:171 - payment_callback - Payment callback: payment_id=pay_QM3C5cQbRXnvBb, order_id=order_QM3Bt0FVmcvq7O
+2025-04-22 14:46:36 - INFO - views.py:196 - payment_callback - Signature verification result: True
+2025-04-22 14:46:36 - INFO - logging.py:36 - log_payment_success - Payment successful | Transaction ID: 9 | Payment ID: pay_QM3C5cQbRXnvBb | Order ID: order_QM3Bt0FVmcvq7O | Amount: 100.00

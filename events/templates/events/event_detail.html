@@ -117,10 +117,9 @@
                     <div class="col-md-12">
                         <a href="{% url 'events:event_list' %}" class="btn btn-secondary">Back to Event List</a>
 
-                        {% if not is_student and request.user_type or request.user.is_staff or request.user.is_superuser
-                        %}
-                        <a href="{% url 'events:event_edit' event.id %}" class="btn btn-primary">Edit Event</a>
-                        <a href="{% url 'events:event_delete' event.id %}" class="btn btn-danger">Delete Event</a>
+                        {% if not is_student and request.user_type or request.user.is_staff or request.user.is_superuser %}
+                            <a href="{% url 'events:event_edit' event.id %}" class="btn btn-primary">Edit Event</a>
+                            <a href="{% url 'events:event_delete' event.id %}" class="btn btn-danger">Delete Event</a>
                         {% endif %}
                     </div>
                 </div>
