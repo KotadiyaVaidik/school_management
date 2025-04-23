@@ -397,7 +397,7 @@
                                 {% endif %}
                             </ul>
                         </li>
-                        <li class="submenu">
+                        {% comment %} <li class="submenu">
                             <a href="#"><i class="fas fa-book-reader"></i> <span>Fees</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
@@ -407,7 +407,7 @@
                                 <li><a href="{% url 'fees:initiate_payment' %}">Pay Fees</a></li>
                                 {% endif %}
                             </ul>
-                        </li>
+                        </li> {% endcomment %}
 
                         <li class="menu-title">
                             <span>Management</span>
